@@ -22,15 +22,20 @@
 				baseFrequency="0.035 0.24"
 				numOctaves="3"
 				seed="12"
-				result="fibres"></feTurbulence>
+				result="fibres"
+			></feTurbulence>
 			<feDisplacementMap
 				in="SourceGraphic"
 				in2="fibres"
 				scale="1.35"
 				xChannelSelector="R"
 				yChannelSelector="G"
-				result="ink"></feDisplacementMap>
-			<feGaussianBlur in="ink" stdDeviation="0.7" result="bleed"
+				result="ink"
+			></feDisplacementMap>
+			<feGaussianBlur
+				in="ink"
+				stdDeviation="0.7"
+				result="bleed"
 			></feGaussianBlur>
 			<feComponentTransfer in="bleed" result="faint-bleed">
 				<feFuncA type="linear" slope="0.4"></feFuncA>
@@ -41,7 +46,8 @@
 				baseFrequency="0.72"
 				numOctaves="3"
 				seed="4"
-				result="grain"></feTurbulence>
+				result="grain"
+			></feTurbulence>
 			<feColorMatrix
 				in="grain"
 				type="matrix"
@@ -49,8 +55,13 @@
 				        0 0 0 0 0
 				        0 0 0 0 0
 				        0.28 0.28 0.28 0 0.48"
-				result="density"></feColorMatrix>
-			<feComposite in="ink" in2="density" operator="in" result="dry-ink"
+				result="density"
+			></feColorMatrix>
+			<feComposite
+				in="ink"
+				in2="density"
+				operator="in"
+				result="dry-ink"
 			></feComposite>
 			<feMerge>
 				<feMergeNode in="faint-bleed"></feMergeNode>
@@ -70,15 +81,20 @@
 				baseFrequency="0.045 0.19"
 				numOctaves="3"
 				seed="8"
-				result="fibres"></feTurbulence>
+				result="fibres"
+			></feTurbulence>
 			<feDisplacementMap
 				in="SourceGraphic"
 				in2="fibres"
 				scale="0.85"
 				xChannelSelector="R"
 				yChannelSelector="G"
-				result="ink"></feDisplacementMap>
-			<feGaussianBlur in="ink" stdDeviation="0.55" result="bleed"
+				result="ink"
+			></feDisplacementMap>
+			<feGaussianBlur
+				in="ink"
+				stdDeviation="0.55"
+				result="bleed"
 			></feGaussianBlur>
 			<feComponentTransfer in="bleed" result="faint-bleed">
 				<feFuncA type="linear" slope="0.3"></feFuncA>

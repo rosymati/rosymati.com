@@ -4,24 +4,28 @@ import { site } from '@/config';
 const year = new Date().getFullYear();
 ---
 
-<footer
-	class="meta border-rule text-muted mx-auto flex max-w-240 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t py-6"
->
-	<p>© {year} {site.name}</p>
+<footer class="meta border-rule text-muted mx-auto flex max-w-240 flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t py-6">
+	<p>
+		© {year} {site.name}
+	</p>
 	<ul class="-mx-2 flex items-center">
 		<li>
 			<a
 				class="hover:text-pigment inline-flex min-h-11 items-center px-2"
-				href="/rss.xml">rss</a
+				href="/rss.xml"
 			>
+				rss
+			</a>
 		</li>
 		<li>
 			<a
 				class="hover:text-pigment inline-flex min-h-11 items-center px-2"
 				href={site.source}
 				target="_blank"
-				rel="noopener noreferrer">source</a
+				rel="noopener noreferrer"
 			>
+				source
+			</a>
 		</li>
 	</ul>
 </footer>

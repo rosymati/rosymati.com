@@ -5,7 +5,7 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "12.3.4",
+			"version": "12.7.0",
 			"onFail": "download"
 		},
 		"runtime": [
@@ -28,19 +28,19 @@
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.19",
-		"astro": "7.3.1",
+		"astro": "7.3.5",
 		"giscus": "^1.6.0",
 		"tailwindcss": "^4.3.3"
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.10",
 		"@astrojs/sitemap": "^3.7.4",
-		"@prettier/plugin-oxc": "^0.2.2",
+		"@prettier/plugin-oxc": "^0.2.3",
 		"@tailwindcss/typography": "^0.5.20",
 		"@tailwindcss/vite": "^4.3.3",
-		"oxlint": "^1.81.0",
-		"prettier": "=3.9.6",
-		"prettier-plugin-astro": "^0.14.1",
+		"oxlint": "^1.85.0",
+		"prettier": "=3.9.9",
+		"prettier-plugin-astro": "^1.1.0",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"typescript": "^6.0.3"
 	}

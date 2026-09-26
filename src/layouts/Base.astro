@@ -42,19 +42,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<link rel="preload" as="image" href={paper.src} />
 		<slot name="head" />
 	</head>
-	<body
-		class="relative flex min-h-svh flex-col bg-[radial-gradient(ellipse_at_28%_20%,#fffdf633,transparent_72%)]"
-	>
+	<body class="relative flex min-h-svh flex-col bg-[radial-gradient(ellipse_at_28%_20%,#fffdf633,transparent_72%)]">
 		<InkFilters />
 		<a
 			class="bg-pigment text-paper fixed top-3 left-3 z-20 translate-y-[-160%] px-5 py-3 focus:translate-y-0"
-			href="#content">Skip to content</a
+			href="#content"
 		>
+			Skip to content
+		</a>
 		<div
 			class="bg-paper-grain pointer-events-none absolute inset-0 z-10 bg-size-[240px_640px] bg-repeat opacity-[0.24] mix-blend-multiply forced-colors:hidden"
 			aria-hidden="true"
-		>
-		</div>
+		></div>
 		<main id="content" class="flex-1" tabindex="-1">
 			<slot />
 		</main>
