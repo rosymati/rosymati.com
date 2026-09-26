@@ -16,6 +16,7 @@ export default defineConfig({
 			name: 'DM Sans',
 			cssVariable: '--dm-sans',
 			weights: ['400 500 600 700'],
+			display: 'block',
 		},
 		{
 			provider: fontProviders.fontsource(),
@@ -23,6 +24,7 @@ export default defineConfig({
 			cssVariable: '--instrument',
 			weights: [400],
 			styles: ['normal', 'italic'],
+			display: 'block',
 		},
 	],
 	vite: {

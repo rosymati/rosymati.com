@@ -11,6 +11,14 @@ const roseSizes =
 ---
 
 <Base>
+	<link
+		slot="head"
+		rel="preload"
+		as="image"
+		imagesrcset={roseSrcset}
+		imagesizes={roseSizes}
+		fetchpriority="high"
+	/>
 	<!-- Keep the rotated artwork inside the hero, not a page-wide overflow mask. -->
 	<div class="overflow-clip">
 		<section
@@ -66,6 +74,7 @@ const roseSizes =
 					width={rose.width}
 					height={rose.height}
 					alt=""
+					decoding="sync"
 				/>
 				<img
 					class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] opacity-[0.94] mix-blend-multiply filter-[url(#ink-botanical)_saturate(0.68)_contrast(1.08)]"
@@ -75,8 +84,7 @@ const roseSizes =
 					height={rose.height}
 					sizes={roseSizes}
 					alt=""
-					loading="eager"
-					fetchpriority="high"
+					decoding="sync"
 				/>
 			</figure>
 		</section>

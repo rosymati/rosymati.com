@@ -2,6 +2,7 @@
 import '@/styles/global.css';
 import InkFilters from '@/components/InkFilters.astro';
 import { site } from '@/config';
+import paper from '@/assets/rosymati/paper.webp';
 import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 
@@ -38,6 +39,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<ClientRouter />
 		<Font cssVariable="--instrument" preload />
 		<Font cssVariable="--dm-sans" preload />
+		<link rel="preload" as="image" href={paper.src} />
+		<slot name="head" />
 	</head>
 	<body
 		class="relative flex min-h-svh flex-col bg-[radial-gradient(ellipse_at_28%_20%,#fffdf633,transparent_72%)]"
@@ -58,3 +61,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 		<slot name="footer" />
 	</body>
 </html>
+
+<script>
+	// Hold the page swap until the next page's images are decoded, so they
+	// arrive with the page instead of popping in after it.
+	async function decode({ src, srcset, sizes }: HTMLImageElement) {
+		const img = new Image();
+		img.sizes = sizes;
+		img.srcset = srcset;
+		img.src = src;
+		await img.decode().catch(() => {});
+	}
+
+	document.addEventListener('astro:before-preparation', (event) => {
+		const load = event.loader;
+		event.loader = async () => {
+			await load();
+			await Promise.all([...event.newDocument.images].map(decode));
+		};
+	});
+</script>
