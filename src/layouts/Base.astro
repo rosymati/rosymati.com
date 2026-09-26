@@ -16,9 +16,36 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en" class="bg-paper font-dm-sans text-ink">
+<!--
+	The paper-and-ink palette is the design; keep it out of dark modes.
+	`only light` opts out of browser forced dark (Chrome, Samsung). It's set
+	inline rather than as a color-scheme meta so that Dark Reader's detector
+	gets past it to the `dark` class and reports the page as already dark,
+	which makes it leave every frame alone, giscus's included.
+-->
+<html
+	lang="en"
+	class="dark bg-paper font-dm-sans text-ink"
+	style="color-scheme: only light"
+>
 	<head>
 		<meta charset="UTF-8" />
+		<!--
+			The lock stops Dark Reader in this page; versions without lock
+			support skip a page whose `darkreader` instance marker isn't theirs.
+		-->
+		<meta name="darkreader-lock" />
+		<meta name="darkreader" content="rosymati-light-only" />
+		<script is:inline>
+			// Dark Reader paints #181a1b under everything at document_start and
+			// only removes it once it reads the lock, a frame later (or never,
+			// in some 2022 versions). Take it down before the first paint.
+			document
+				.querySelectorAll('.darkreader--fallback')
+				.forEach(function (style) {
+					style.remove();
+				});
+		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#f3efe5" />
