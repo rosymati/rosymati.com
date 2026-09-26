@@ -19,5 +19,7 @@ const {
 		className,
 	]}
 >
-	{title}<span class="text-ink">.</span>
+	<!-- Negative tracking makes the dot's selection box overlap the last letter:
+	positioning the title paints it on top, and the dot keeps its full advance. -->
+	<span class="relative">{title}</span><span class="text-ink tracking-normal">.</span>
 </h1>
