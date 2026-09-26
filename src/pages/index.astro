@@ -7,7 +7,7 @@ import smallRose from '@/assets/rosymati/rose-ink-small.webp';
 
 const roseSrcset = `${smallRose.src} ${smallRose.width}w, ${rose.src} ${rose.width}w`;
 const roseSizes =
-	'(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(90vw, 384px)';
+	'(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(85vw, 60svh)';
 ---
 
 <Base>
@@ -20,12 +20,14 @@ const roseSizes =
 		fetchpriority="high"
 	/>
 	<!-- Keep the rotated artwork inside the hero, not a page-wide overflow mask. -->
-	<div class="overflow-clip">
+	<div class="overflow-clip xl:px-12">
 		<section
-			class="relative isolate mx-auto flex min-h-svh max-w-312 flex-col px-6 pt-12 pb-6 sm:px-12 md:grid md:grid-cols-2 md:items-center md:py-6 xl:block xl:px-0 xl:py-0"
+			class="relative isolate mx-auto grid min-h-svh max-w-312 grid-rows-[auto_minmax(22rem,1fr)] gap-4 px-6 pt-12 pb-6 sm:px-12 md:grid-cols-2 md:grid-rows-none md:items-center md:gap-0 md:py-6 xl:block xl:px-0 xl:py-0"
 			aria-labelledby="hero-title"
 		>
-			<div class="relative z-2 min-w-0 xl:w-[65%] xl:py-[25%]">
+			<div
+				class="relative z-2 mx-auto w-fit min-w-0 md:mx-0 md:w-auto xl:w-[65%] xl:py-[25%]"
+			>
 				<p
 					class="font-instrument text-pigment ml-0.5 text-2xl leading-[1.3] italic mix-blend-multiply md:ml-1.25 md:text-[28px]"
 				>
@@ -62,31 +64,33 @@ const roseSizes =
 				</nav>
 			</div>
 
-			<figure
-				class="pointer-events-none relative z-1 mt-6 -mr-6 ml-auto w-[min(90vw,24rem)] shrink-0 rotate-7 mix-blend-multiply select-none md:mt-0 md:w-[min(53vw,60svh)] xl:absolute xl:top-3 xl:-right-14.25 xl:m-0 xl:w-165"
-				aria-hidden="true"
-			>
-				<img
-					class="absolute inset-0 w-full max-w-none scale-[1.012] mask-[linear-gradient(#000_65%,transparent_96%)] opacity-[0.28] blur-[3px] saturate-[0.8]"
-					src={rose.src}
-					srcset={roseSrcset}
-					sizes={roseSizes}
-					width={rose.width}
-					height={rose.height}
-					alt=""
-					decoding="sync"
-				/>
-				<img
-					class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] opacity-[0.94] mix-blend-multiply filter-[url(#ink-botanical)_saturate(0.68)_contrast(1.08)]"
-					src={rose.src}
-					srcset={roseSrcset}
-					width={rose.width}
-					height={rose.height}
-					sizes={roseSizes}
-					alt=""
-					decoding="sync"
-				/>
-			</figure>
+			<div class="@container-size grid place-items-center md:contents">
+				<figure
+					class="pointer-events-none relative z-1 w-[min(90cqw,72cqh)] rotate-7 mix-blend-multiply select-none md:ml-auto md:w-[min(53vw,60svh)] xl:absolute xl:top-3 xl:-right-14.25 xl:m-0 xl:w-165"
+					aria-hidden="true"
+				>
+					<img
+						class="absolute inset-0 w-full max-w-none scale-[1.012] mask-[linear-gradient(#000_65%,transparent_96%)] opacity-[0.28] blur-[3px] saturate-[0.8]"
+						src={rose.src}
+						srcset={roseSrcset}
+						sizes={roseSizes}
+						width={rose.width}
+						height={rose.height}
+						alt=""
+						decoding="sync"
+					/>
+					<img
+						class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] opacity-[0.94] mix-blend-multiply filter-[url(#ink-botanical)_saturate(0.68)_contrast(1.08)]"
+						src={rose.src}
+						srcset={roseSrcset}
+						width={rose.width}
+						height={rose.height}
+						sizes={roseSizes}
+						alt=""
+						decoding="sync"
+					/>
+				</figure>
+			</div>
 		</section>
 	</div>
 </Base>
