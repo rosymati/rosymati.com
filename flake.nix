@@ -13,17 +13,17 @@
         let
           pkgs = import nixpkgs { inherit system; };
 
-          version = "12.3.1";
+          version = (lib.importJSON ./package.json).devEngines.packageManager.version;
 
           pnpmSrc =
             {
               x86_64-linux = {
                 npmPkg = "linux-x64";
-                hash = "sha256-JbjO7qu6oxreMgIOGZcVR7QCoILRUE+v8a3k+1HtxTk=";
+                hash = "sha256-N5LtElJxhHRbC0rdnaQHM2IhZppF+TbaHQdX88XDDdw=";
               };
               aarch64-linux = {
                 npmPkg = "linux-arm64";
-                hash = "sha256-pvn+IPdjKb6dJAz3ep8XVGrM7NYvT22brV9Gj8ChJIM=";
+                hash = "sha256-HgWzu03+aaSOow/aBnus2xsK2kUS6gMeV6UoOhspiYA=";
               };
             }
             .${system} or (throw "no pnpm binary mapping for ${system}");
