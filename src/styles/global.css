@@ -2,20 +2,50 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-	--color-paper: #f2efe6;
-	--color-ink: #322d29;
+	--color-paper: #f3efe5;
+	--color-ink: #302b27;
 	--color-muted: #71665d;
 	--color-copy: #60564e;
-	--color-pigment: #921d32;
-	--color-pigment-dark: #741327;
+	--color-pigment: #791f30;
+	--color-pigment-dark: #5e1725;
 	--color-leaf: #425a4d;
 	--color-rule: #b6aaa080;
 
 	--background-image-paper-grain: url('../assets/rosymati/paper.webp');
-	--background-image-pigment-bleed: url('../assets/rosymati/rose-bleed.webp');
 
 	--font-dm-sans: var(--dm-sans);
 	--font-instrument: var(--instrument);
+}
+
+@layer base {
+	html {
+		text-rendering: optimizeLegibility;
+		-webkit-font-smoothing: antialiased;
+	}
+
+	::selection {
+		background-color: var(--color-pigment);
+		color: var(--color-paper);
+	}
+
+	a {
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.22em;
+	}
+
+	a:focus-visible {
+		outline: 2px solid var(--color-pigment);
+		outline-offset: 4px;
+	}
+}
+
+/* Small tracked caps for dates, tags and other marginalia. */
+@utility meta {
+	font-size: 0.6875rem;
+	line-height: 1.4;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	font-variant-numeric: tabular-nums;
 }
 
 .prose {

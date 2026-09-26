@@ -1,47 +1,49 @@
 export const site = {
 	name: 'Matilde',
+	description:
+		'Systems programmer based in Europe, mostly writing Rust and occasionally messing with Gleam.',
+	source: 'https://github.com/rosymati/rosymati.com',
 	rssTitle: "Mati's Blog",
 	rssDescription: "systems programming, Rust, and whatever else I'm building",
 };
 
-export type AccentColor = 'peach' | 'lavender' | 'pink';
+export const nav = [
+	{ href: '/about', label: 'about' },
+	{ href: '/projects', label: 'work' },
+	{ href: '/blog', label: 'notes' },
+	{ href: '/contacts', label: 'say hello' },
+];
 
 export const contacts = {
 	github: {
 		name: 'GitHub',
 		handle: '@rosymati',
 		href: 'https://github.com/rosymati',
-		color: 'peach' as AccentColor,
 	},
 	bluesky: {
 		name: 'Bluesky',
 		handle: '@rosymati.com',
 		href: 'https://bsky.app/profile/rosymati.com',
-		color: 'lavender' as AccentColor,
 	},
 	fediverse: {
 		name: 'Fediverse',
 		handle: '@matilde@tech.lgbt',
 		href: 'https://tech.lgbt/@matilde',
-		color: 'lavender' as AccentColor,
 	},
 	discord: {
 		name: 'Discord',
 		handle: '@milksheep',
 		href: 'https://discord.com',
-		color: 'lavender' as AccentColor,
 	},
 	twitter: {
 		name: 'Twitter',
 		handle: '@_rosymati',
 		href: 'https://x.com/_rosymati',
-		color: 'peach' as AccentColor,
 	},
 	email: {
 		name: 'Email',
 		handle: 'hello@rosymati.com',
 		href: 'mailto:hello@rosymati.com',
-		color: 'pink' as AccentColor,
 	},
 };
 
@@ -52,28 +54,24 @@ export const projects = [
 			'An elegant Wayland compositor built from scratch, along with a full ecosystem of Rust libraries powering it.',
 		tags: ['Rust', 'Wayland', 'Compositor'],
 		href: 'https://verdi.rocks',
-		color: 'lavender' as AccentColor,
 	},
 	{
 		name: 'sap',
 		description: 'A small, simple and sweet argument parser for Rust.',
 		tags: ['Rust', 'CLI', 'Library'],
 		href: 'https://github.com/tailwags/sap',
-		color: 'peach' as AccentColor,
 	},
 	// {
 	// 	name: 'blossom',
 	// 	description: 'A delightful package manager for Linux.',
 	// 	tags: ['Rust', 'Linux', 'Systems'],
 	// 	href: 'https://github.com/tailwags/blossom',
-	// 	color: 'pink' as AccentColor,
 	// },
 	{
 		name: 'bread',
 		description: 'A modern UEFI bootloader for the Linux kernel.',
 		tags: ['Rust', 'UEFI', 'Linux'],
 		href: 'https://github.com/tailwags/bread',
-		color: 'peach' as AccentColor,
 	},
 	{
 		name: 'puppyutils',
@@ -81,28 +79,24 @@ export const projects = [
 			'A Rust reimplementation of coreutils, util-linux, and find-utils.',
 		tags: ['Rust', 'Linux', 'Systems'],
 		href: 'https://puppyutils.org/',
-		color: 'peach' as AccentColor,
 	},
 	{
 		name: 'maple',
 		description: 'A new Linux environment written in Rust.',
 		tags: ['Rust', 'Linux'],
 		href: 'https://github.com/tailwags/maple',
-		color: 'lavender' as AccentColor,
 	},
 	// {
 	// 	name: 'cake',
 	// 	description: 'The Portal ending screen, running in your browser.',
 	// 	tags: ['TypeScript', 'Web'],
 	// 	href: 'https://cake.matilde.pet/',
-	// 	color: 'pink' as AccentColor,
 	// },
 	{
 		name: 'podzol',
 		description: 'A modern package manager for Minecraft modpacks.',
 		tags: ['Rust', 'Minecraft', 'CLI'],
 		href: 'https://github.com/rosymati/podzol',
-		color: 'lavender' as AccentColor,
 	},
 ];
 

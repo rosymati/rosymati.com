@@ -19,9 +19,10 @@ export default defineConfig({
 		},
 		{
 			provider: fontProviders.fontsource(),
-			name: ' Instrument Serif ',
+			name: 'Instrument Serif',
 			cssVariable: '--instrument',
-			weights: ['400 500 600 700'],
+			weights: [400],
+			styles: ['normal', 'italic'],
 		},
 	],
 	vite: {

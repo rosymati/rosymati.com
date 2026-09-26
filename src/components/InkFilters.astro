@@ -1,0 +1,92 @@
+<!-- Static, seeded texture: the ink is already dry, not an animated effect. -->
+<svg
+	class="pointer-events-none absolute overflow-hidden"
+	width="0"
+	height="0"
+	aria-hidden="true"
+	focusable="false"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<defs>
+		<filter
+			id="ink-letterpress"
+			x="-5%"
+			y="-15%"
+			width="110%"
+			height="130%"
+			color-interpolation-filters="sRGB"
+		>
+			<!-- Uneven edges and a close capillary bleed, never a drop shadow. -->
+			<feTurbulence
+				type="fractalNoise"
+				baseFrequency="0.035 0.24"
+				numOctaves="3"
+				seed="12"
+				result="fibres"></feTurbulence>
+			<feDisplacementMap
+				in="SourceGraphic"
+				in2="fibres"
+				scale="1.35"
+				xChannelSelector="R"
+				yChannelSelector="G"
+				result="ink"></feDisplacementMap>
+			<feGaussianBlur in="ink" stdDeviation="0.7" result="bleed"
+			></feGaussianBlur>
+			<feComponentTransfer in="bleed" result="faint-bleed">
+				<feFuncA type="linear" slope="0.4"></feFuncA>
+			</feComponentTransfer>
+			<!-- Vary pigment density inside the strokes; keep the text selectable. -->
+			<feTurbulence
+				type="fractalNoise"
+				baseFrequency="0.72"
+				numOctaves="3"
+				seed="4"
+				result="grain"></feTurbulence>
+			<feColorMatrix
+				in="grain"
+				type="matrix"
+				values="0 0 0 0 0
+				        0 0 0 0 0
+				        0 0 0 0 0
+				        0.28 0.28 0.28 0 0.48"
+				result="density"></feColorMatrix>
+			<feComposite in="ink" in2="density" operator="in" result="dry-ink"
+			></feComposite>
+			<feMerge>
+				<feMergeNode in="faint-bleed"></feMergeNode>
+				<feMergeNode in="dry-ink"></feMergeNode>
+			</feMerge>
+		</filter>
+		<filter
+			id="ink-botanical"
+			x="-3%"
+			y="-3%"
+			width="106%"
+			height="106%"
+			color-interpolation-filters="sRGB"
+		>
+			<feTurbulence
+				type="fractalNoise"
+				baseFrequency="0.045 0.19"
+				numOctaves="3"
+				seed="8"
+				result="fibres"></feTurbulence>
+			<feDisplacementMap
+				in="SourceGraphic"
+				in2="fibres"
+				scale="0.85"
+				xChannelSelector="R"
+				yChannelSelector="G"
+				result="ink"></feDisplacementMap>
+			<feGaussianBlur in="ink" stdDeviation="0.55" result="bleed"
+			></feGaussianBlur>
+			<feComponentTransfer in="bleed" result="faint-bleed">
+				<feFuncA type="linear" slope="0.3"></feFuncA>
+			</feComponentTransfer>
+			<feMerge>
+				<feMergeNode in="faint-bleed"></feMergeNode>
+				<feMergeNode in="ink"></feMergeNode>
+			</feMerge>
+		</filter>
+	</defs>
+</svg>

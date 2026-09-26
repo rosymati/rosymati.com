@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import InkFilters from '@/components/InkFilters.astro';
+import { site } from '@/config';
 import { ClientRouter } from 'astro:transitions';
 import { Font } from 'astro:assets';
 
@@ -8,20 +10,28 @@ interface Props {
 	description?: string;
 }
 
-const { title = 'Matilde', description } = Astro.props;
+const { title = site.name, description = site.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-paper font-dm-sans text-ink">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		{description && <meta name="description" content={description} />}
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f3efe5" />
+		<link rel="canonical" href={canonical} />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={site.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<link
 			rel="alternate"
 			type="application/rss+xml"
-			title="Mati's Blog"
+			title={site.rssTitle}
 			href={new URL('rss.xml', Astro.site)}
 		/>
 		<title>{title}</title>
@@ -30,19 +40,21 @@ const { title = 'Matilde', description } = Astro.props;
 		<Font cssVariable="--dm-sans" preload />
 	</head>
 	<body
-		class="selection:bg-pigment selection:text-paper [&_a:focus-visible]:outline-pigment relative min-h-svh [&_a:focus-visible]:outline-2 [&_a:focus-visible]:outline-offset-4"
+		class="relative flex min-h-svh flex-col bg-[radial-gradient(ellipse_at_28%_20%,#fffdf633,transparent_72%)]"
 	>
+		<InkFilters />
 		<a
 			class="bg-pigment text-paper fixed top-3 left-3 z-20 translate-y-[-160%] px-5 py-3 focus:translate-y-0"
 			href="#content">Skip to content</a
 		>
 		<div
-			class="bg-paper-grain pointer-events-none absolute inset-0 z-10 bg-size-[192px_512px] bg-repeat opacity-50 mix-blend-multiply"
+			class="bg-paper-grain pointer-events-none absolute inset-0 z-10 bg-size-[240px_640px] bg-repeat opacity-[0.24] mix-blend-multiply forced-colors:hidden"
 			aria-hidden="true"
 		>
 		</div>
-		<main id="content" tabindex="-1">
+		<main id="content" class="flex-1" tabindex="-1">
 			<slot />
 		</main>
+		<slot name="footer" />
 	</body>
 </html>

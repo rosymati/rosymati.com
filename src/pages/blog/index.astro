@@ -24,17 +24,24 @@ const posts = (await getCollection('blog')).toSorted(
 			<ul class="border-rule divide-rule divide-y border-y">
 				{posts.map((post) => (
 					<li>
-						<a class="group block py-6 sm:py-8" href={`/blog/${post.id}/`}>
+						<a
+							class="group grid gap-y-3 py-6 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] sm:gap-x-10 sm:py-8"
+							href={`/blog/${post.id}/`}
+						>
 							<time
 								datetime={post.data.pubDate.toISOString()}
-								class="text-muted text-xs"
+								class="meta text-muted sm:pt-3"
 							>
 								{formatDate(post.data.pubDate)}
 							</time>
-							<h2 class="font-instrument group-hover:text-pigment mt-3 mb-4 text-4xl leading-tight tracking-tight group-hover:underline sm:text-5xl">
-								{post.data.title}
-							</h2>
-							<p class="text-copy max-w-160">{post.data.description}</p>
+							<div>
+								<h2 class="font-instrument group-hover:text-pigment text-4xl leading-tight tracking-tight text-balance group-hover:underline sm:text-5xl">
+									{post.data.title}
+								</h2>
+								<p class="text-copy mt-3 max-w-[60ch]">
+									{post.data.description}
+								</p>
+							</div>
 						</a>
 					</li>
 				))}
@@ -42,9 +49,10 @@ const posts = (await getCollection('blog')).toSorted(
 		)
 	}
 	<a
-		class="text-pigment mt-8 inline-block py-3 hover:underline"
+		class="group text-pigment mt-8 inline-flex min-h-11 items-center gap-2"
 		href="/rss.xml"
 	>
-		subscribe via RSS <span class="ml-1.75" aria-hidden="true">↗</span>
+		<span class="group-hover:underline">subscribe via RSS</span>
+		<span aria-hidden="true">↗&#xfe0e;</span>
 	</a>
 </Page>

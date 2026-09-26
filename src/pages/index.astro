@@ -1,15 +1,16 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Title from '@/components/Title.astro';
+import { nav } from '@/config';
 import rose from '@/assets/rosymati/rose-ink.webp';
 import smallRose from '@/assets/rosymati/rose-ink-small.webp';
-import bleed from '@/assets/rosymati/rose-bleed.webp';
+
 const roseSrcset = `${smallRose.src} ${smallRose.width}w, ${rose.src} ${rose.width}w`;
+const roseSizes =
+	'(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(90vw, 384px)';
 ---
 
-<Base
-	description="Systems programmer based in Europe, mostly writing Rust and occasionally messing with Gleam."
->
+<Base>
 	<!-- Keep the rotated artwork inside the hero, not a page-wide overflow mask. -->
 	<div class="overflow-clip">
 		<section
@@ -18,58 +19,61 @@ const roseSrcset = `${smallRose.src} ${smallRose.width}w, ${rose.src} ${rose.wid
 		>
 			<div class="relative z-2 min-w-0 xl:w-[65%] xl:py-[25%]">
 				<p
-					class="font-instrument text-pigment ml-0.5 text-2xl leading-[1.3] italic md:ml-1.25 md:text-[28px]"
+					class="font-instrument text-pigment ml-0.5 text-2xl leading-[1.3] italic mix-blend-multiply md:ml-1.25 md:text-[28px]"
 				>
 					Hi, I'm
 				</p>
 				<Title
 					title="Matilde"
 					id="hero-title"
-					class="mt-2 -ml-[0.04em] text-[clamp(88px,32vw,144px)] leading-[0.95] md:-ml-2.25 md:text-[clamp(124px,15.3vw,220px)]"
+					class="mt-2 ml-[-0.04em] text-[clamp(88px,32vw,144px)] leading-[0.95] md:-ml-2.25 md:text-[clamp(124px,15.3vw,220px)]"
 				/>
-				<nav
-					class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 sm:gap-x-7 md:mt-8.5"
-					aria-label="Main navigation"
-				>
-					<a
-						class="hover:text-pigment inline-flex min-h-11 min-w-11 items-center py-3 hover:underline sm:min-w-0"
-						href="/about">about</a
-					>
-					<a
-						class="hover:text-pigment inline-flex min-h-11 min-w-11 items-center py-3 hover:underline sm:min-w-0"
-						href="/projects">work</a
-					>
-					<a
-						class="hover:text-pigment inline-flex min-h-11 min-w-11 items-center py-3 hover:underline sm:min-w-0"
-						href="/blog">notes</a
-					>
-					<a
-						class="text-pigment inline-flex min-h-11 items-center py-3 whitespace-nowrap hover:underline"
-						href="/contacts"
-					>
-						say hello <span class="ml-1.75" aria-hidden="true">↗</span>
-					</a>
+				<nav class="mt-6 -ml-2 md:mt-8.5" aria-label="Main navigation">
+					<ul class="flex flex-wrap items-center sm:gap-x-3">
+						{
+							nav.map(({ href, label }, i) => (
+								<li>
+									<a
+										class:list={[
+											'group inline-flex min-h-11 items-center gap-1.75 px-2 whitespace-nowrap',
+											i === nav.length - 1
+												? 'text-pigment'
+												: 'hover:text-pigment',
+										]}
+										href={href}
+									>
+										<span class="group-hover:underline">{label}</span>
+										{i === nav.length - 1 && (
+											<span aria-hidden="true">↗&#xfe0e;</span>
+										)}
+									</a>
+								</li>
+							))
+						}
+					</ul>
 				</nav>
 			</div>
 
 			<figure
-				class="pointer-events-none relative z-1 mt-6 -mr-6 ml-auto w-[min(90vw,24rem)] shrink-0 rotate-7 md:mt-0 md:w-[min(53vw,60svh)] xl:absolute xl:top-3 xl:-right-14.25 xl:m-0 xl:w-165"
+				class="pointer-events-none relative z-1 mt-6 -mr-6 ml-auto w-[min(90vw,24rem)] shrink-0 rotate-7 mix-blend-multiply select-none md:mt-0 md:w-[min(53vw,60svh)] xl:absolute xl:top-3 xl:-right-14.25 xl:m-0 xl:w-165"
 				aria-hidden="true"
 			>
 				<img
-					class="absolute inset-0 w-full max-w-none -translate-x-4 translate-y-3 scale-[1.045] mask-[linear-gradient(#000_45%,transparent_86%)] opacity-42 mix-blend-multiply"
-					src={bleed.src}
-					width={bleed.width}
-					height={bleed.height}
+					class="absolute inset-0 w-full max-w-none scale-[1.012] mask-[linear-gradient(#000_65%,transparent_96%)] opacity-[0.28] blur-[3px] saturate-[0.8]"
+					src={rose.src}
+					srcset={roseSrcset}
+					sizes={roseSizes}
+					width={rose.width}
+					height={rose.height}
 					alt=""
 				/>
 				<img
-					class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] mix-blend-multiply"
+					class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] opacity-[0.94] mix-blend-multiply filter-[url(#ink-botanical)_saturate(0.68)_contrast(1.08)]"
 					src={rose.src}
 					srcset={roseSrcset}
 					width={rose.width}
 					height={rose.height}
-					sizes="(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(90vw, 384px)"
+					sizes={roseSizes}
 					alt=""
 					loading="eager"
 					fetchpriority="high"

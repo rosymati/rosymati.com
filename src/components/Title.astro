@@ -2,7 +2,7 @@
 interface Props {
 	title: string;
 	id?: string;
-	class?: string;
+	class?: string | undefined;
 }
 
 const {
@@ -15,7 +15,7 @@ const {
 <h1
 	id={id}
 	class:list={[
-		'font-instrument text-pigment font-normal tracking-[-0.057em] text-shadow-[0.6px_0.8px_0_#921d3233,-0.8px_0_1.5px_#921d321a]',
+		'font-instrument text-pigment font-normal tracking-[-0.057em] text-balance mix-blend-multiply filter-[url(#ink-letterpress)] forced-colors:mix-blend-normal forced-colors:filter-none',
 		className,
 	]}
 >
