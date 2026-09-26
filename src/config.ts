@@ -14,38 +14,34 @@ export const nav = [
 	{ href: '/contacts', label: 'say hello' },
 ];
 
-export const contacts = {
-	github: {
+export const contacts = [
+	{
 		name: 'GitHub',
-		handle: '@rosymati',
+		description: '@rosymati',
 		href: 'https://github.com/rosymati',
 	},
-	bluesky: {
+	{
 		name: 'Bluesky',
-		handle: '@rosymati.com',
+		description: '@rosymati.com',
 		href: 'https://bsky.app/profile/rosymati.com',
 	},
-	fediverse: {
+	{
 		name: 'Fediverse',
-		handle: '@matilde@tech.lgbt',
+		description: '@matilde@tech.lgbt',
 		href: 'https://tech.lgbt/@matilde',
 	},
-	discord: {
-		name: 'Discord',
-		handle: '@milksheep',
-		href: 'https://discord.com',
-	},
-	twitter: {
+	{ name: 'Discord', description: '@milksheep', href: 'https://discord.com' },
+	{
 		name: 'Twitter',
-		handle: '@_rosymati',
+		description: '@_rosymati',
 		href: 'https://x.com/_rosymati',
 	},
-	email: {
+	{
 		name: 'Email',
-		handle: 'hello@rosymati.com',
+		description: 'hello@rosymati.com',
 		href: 'mailto:hello@rosymati.com',
 	},
-};
+];
 
 export const projects = [
 	{
@@ -97,20 +93,5 @@ export const projects = [
 		description: 'A modern package manager for Minecraft modpacks.',
 		tags: ['Rust', 'Minecraft', 'CLI'],
 		href: 'https://github.com/rosymati/podzol',
-	},
-];
-
-export const rings = [
-	// {
-	// 	name: 'nix webring',
-	// 	member: 'matilde',
-	// 	base: 'https://nixwebr.ing',
-	// 	random: true,
-	// },
-	{
-		name: 'pet webring',
-		member: 'matilde.pet',
-		base: 'https://petwebr.ing',
-		random: true,
 	},
 ];

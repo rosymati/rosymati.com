@@ -1,21 +1,11 @@
 ---
 import Page from '@/layouts/Page.astro';
 import PageHeader from '@/components/PageHeader.astro';
-import LinkRow from '@/components/LinkRow.astro';
+import LinkList from '@/components/LinkList.astro';
 import { contacts } from '@/config';
 ---
 
 <Page title="Contacts" description="Find me around the internet.">
 	<PageHeader title="say hello" subtitle="find me around the internet" />
-	<ul class="border-rule divide-rule divide-y border-y">
-		{
-			Object.values(contacts).map((contact) => (
-				<LinkRow
-					title={contact.name}
-					href={contact.href}
-					description={contact.handle}
-				/>
-			))
-		}
-	</ul>
+	<LinkList items={contacts} />
 </Page>

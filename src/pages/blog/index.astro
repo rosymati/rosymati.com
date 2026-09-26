@@ -1,12 +1,9 @@
 ---
 import Page from '@/layouts/Page.astro';
 import PageHeader from '@/components/PageHeader.astro';
-import { getCollection } from 'astro:content';
-import { formatDate } from '@/utils';
+import { formatDate, getPosts } from '@/utils';
 
-const posts = (await getCollection('blog')).toSorted(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getPosts();
 ---
 
 <Page

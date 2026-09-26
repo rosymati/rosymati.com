@@ -12,14 +12,12 @@ const { title, description } = Astro.props;
 ---
 
 <Base title={`${title} · ${site.name}`} description={description}>
-	<div class="px-5 pb-16 sm:px-12 sm:pb-24">
-		<div class="mx-auto max-w-240 pt-8 wrap-anywhere sm:pt-16">
-			<slot />
-		</div>
+	<div
+		class="mx-auto box-content max-w-240 px-5 pt-8 pb-16 wrap-anywhere sm:px-12 sm:pt-16 sm:pb-24"
+	>
+		<slot />
 	</div>
 	<div slot="footer" class="px-5 sm:px-12">
-		<div class="mx-auto max-w-240">
-			<Footer />
-		</div>
+		<Footer />
 	</div>
 </Base>

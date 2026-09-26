@@ -1,22 +1,11 @@
 ---
 import Page from '@/layouts/Page.astro';
 import PageHeader from '@/components/PageHeader.astro';
-import LinkRow from '@/components/LinkRow.astro';
+import LinkList from '@/components/LinkList.astro';
 import { projects } from '@/config';
 ---
 
 <Page title="Projects" description="Things I've built and contributed to.">
 	<PageHeader title="work" subtitle="things i've built and tinkered with" />
-	<ul class="border-rule divide-rule divide-y border-y">
-		{
-			projects.map((project) => (
-				<LinkRow
-					title={project.name}
-					href={project.href}
-					description={project.description}
-					meta={project.tags.join(' · ')}
-				/>
-			))
-		}
-	</ul>
+	<LinkList items={projects} />
 </Page>

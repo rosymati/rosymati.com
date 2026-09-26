@@ -5,9 +5,16 @@ import { nav } from '@/config';
 import rose from '@/assets/rosymati/rose-ink.webp';
 import smallRose from '@/assets/rosymati/rose-ink-small.webp';
 
-const roseSrcset = `${smallRose.src} ${smallRose.width}w, ${rose.src} ${rose.width}w`;
-const roseSizes =
-	'(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(85vw, 60svh)';
+const roseImg = {
+	src: rose.src,
+	srcset: `${smallRose.src} ${smallRose.width}w, ${rose.src} ${rose.width}w`,
+	sizes:
+		'(min-width: 1280px) 660px, (min-width: 768px) min(53vw, 60svh), min(85vw, 60svh)',
+	width: rose.width,
+	height: rose.height,
+	alt: '',
+	decoding: 'sync',
+} as const;
 ---
 
 <Base>
@@ -15,8 +22,8 @@ const roseSizes =
 		slot="head"
 		rel="preload"
 		as="image"
-		imagesrcset={roseSrcset}
-		imagesizes={roseSizes}
+		imagesrcset={roseImg.srcset}
+		imagesizes={roseImg.sizes}
 		fetchpriority="high"
 	/>
 	<!-- Keep the rotated artwork inside the hero, not a page-wide overflow mask. -->
@@ -71,23 +78,11 @@ const roseSizes =
 				>
 					<img
 						class="absolute inset-0 w-full max-w-none scale-[1.012] mask-[linear-gradient(#000_65%,transparent_96%)] opacity-[0.28] blur-[3px] saturate-[0.8]"
-						src={rose.src}
-						srcset={roseSrcset}
-						sizes={roseSizes}
-						width={rose.width}
-						height={rose.height}
-						alt=""
-						decoding="sync"
+						{...roseImg}
 					/>
 					<img
 						class="relative w-full mask-[linear-gradient(#000_89%,transparent_99%)] opacity-[0.94] mix-blend-multiply filter-[url(#ink-botanical)_saturate(0.68)_contrast(1.08)]"
-						src={rose.src}
-						srcset={roseSrcset}
-						width={rose.width}
-						height={rose.height}
-						sizes={roseSizes}
-						alt=""
-						decoding="sync"
+						{...roseImg}
 					/>
 				</figure>
 			</div>
