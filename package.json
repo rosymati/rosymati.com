@@ -24,7 +24,9 @@
 		"format": "prettier --check .",
 		"format:fix": "prettier --write --list-different .",
 		"lint": "oxlint",
-		"lint:fix": "oxlint --fix"
+		"lint:fix": "oxlint --fix",
+		"wrangler": "wrangler",
+		"deploy": "wrangler deploy"
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.19",
