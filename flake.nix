@@ -19,11 +19,11 @@
             {
               x86_64-linux = {
                 npmPkg = "linux-x64";
-                hash = "sha256-N5LtElJxhHRbC0rdnaQHM2IhZppF+TbaHQdX88XDDdw=";
+                hash = "sha256-p49eKI/h1X0QKEhfAd1yd6PAOHYWVGHhhDmWvyJfoPU=";
               };
               aarch64-linux = {
                 npmPkg = "linux-arm64";
-                hash = "sha256-HgWzu03+aaSOow/aBnus2xsK2kUS6gMeV6UoOhspiYA=";
+                hash = "sha256-r3I8f0FYpaCKePGWWUqwYJpKt495pDvu6VwEHz0jbSs=";
               };
             }
             .${system} or (throw "no pnpm binary mapping for ${system}");

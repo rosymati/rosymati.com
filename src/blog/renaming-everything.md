@@ -1,7 +1,6 @@
 ---
 title: 'Renaming all my projects and digital footprint'
-description: 'A small post describing how I renamed all my digital presence from simple
-changes to resigning all my commits with a new GPG key'
+description: 'A small post describing how I renamed all my digital presence from simple changes to resigning all my commits with a new GPG key'
 pubDate: 2025-02-23
 ---
 
