@@ -1,5 +1,8 @@
 allowBuilds:
   esbuild: true
   sharp: true
+  workerd: true
 minimumReleaseAge: 0
 autoDedupe: true
+lockfile:
+  includeResolutionSettings: true
