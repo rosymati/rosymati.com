@@ -8,6 +8,8 @@ export function formatDate(date: Date): string {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric',
+		// Content dates are UTC midnight; don't let the build machine's zone shift them.
+		timeZone: 'UTC',
 	});
 }
 
