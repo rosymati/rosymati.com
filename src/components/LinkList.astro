@@ -2,7 +2,7 @@
 interface Props {
 	items: {
 		name: string;
-		/** Without one, the row is shown as plain text. */
+		/** Without one, the row is a button that copies the description. */
 		href?: string;
 		rel?: string;
 		description: string;
@@ -16,15 +16,14 @@ const { items } = Astro.props;
 <ul class="border-rule divide-rule divide-y border-y">
 	{items.map(({ name, href, rel, description, tags }) => {
 		const external = href?.startsWith('https:');
-		const Row = href ? 'a' : 'div';
+		const Row = href ? 'a' : 'button';
 		return (
 			<li>
 				<Row
-					class:list={[
-						'grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-6 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_auto] sm:gap-x-10 sm:py-8',
-						href && 'group',
-					]}
+					class="group grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-6 text-left sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_5rem] sm:gap-x-10 sm:py-8"
 					href={href}
+					type={href ? undefined : 'button'}
+					data-copy={href ? undefined : description}
 					target={external ? '_blank' : undefined}
 					rel={
 						external
@@ -41,12 +40,20 @@ const { items } = Astro.props;
 					<p class="text-copy col-span-2 col-start-1 row-start-2 max-w-[48ch] sm:col-span-1 sm:col-start-2 sm:row-start-1">
 						{description}
 					</p>
-					{href && (
+					{href ? (
 						<span
-							class="text-pigment col-start-2 row-start-1 text-2xl sm:col-start-3"
+							class="text-pigment col-start-2 row-start-1 justify-self-end text-2xl sm:col-start-3"
 							aria-hidden="true"
 						>
 							↗&#xfe0e;
+						</span>
+					) : (
+						<span
+							class="meta text-pigment col-start-2 row-start-1 justify-self-end sm:col-start-3"
+							aria-live="polite"
+							data-copy-label
+						>
+							copy
 						</span>
 					)}
 				</Row>
@@ -54,3 +61,20 @@ const { items } = Astro.props;
 		);
 	})}
 </ul>
+
+<script>
+	// Delegated so it keeps working across ClientRouter page swaps.
+	document.addEventListener('click', async (event) => {
+		const row = (event.target as Element).closest<HTMLElement>('[data-copy]');
+		const label = row?.querySelector('[data-copy-label]');
+		if (!row || !label) return;
+
+		try {
+			await navigator.clipboard.writeText(row.dataset.copy!);
+		} catch {
+			return;
+		}
+		label.textContent = 'copied';
+		setTimeout(() => (label.textContent = 'copy'), 2000);
+	});
+</script>

@@ -42,8 +42,6 @@ export const contacts: {
 		href: fediverse.href,
 		rel: 'me',
 	},
-	// No public profile URL without a user ID, so this one is plain text.
-	{ name: 'Discord', description: '@milksheep' },
 	{
 		name: 'Twitter',
 		description: '@_rosymati',
@@ -54,6 +52,9 @@ export const contacts: {
 		description: 'hello@rosymati.com',
 		href: 'mailto:hello@rosymati.com',
 	},
+	// No public profile URL without a user ID, so this row copies the handle.
+	// Kept last so it sits apart from the links.
+	{ name: 'Discord', description: '@milksheep' },
 ];
 
 export const projects = [
