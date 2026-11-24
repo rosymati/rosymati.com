@@ -47,7 +47,7 @@ const roseImg = {
 							<li>
 								<a
 									class:list={[
-										'group inline-flex min-h-11 items-center gap-1.75 px-2 whitespace-nowrap',
+										'group inline-flex min-h-11 items-center px-2 whitespace-nowrap',
 										i === nav.length - 1
 											? 'text-pigment'
 											: 'hover:text-pigment',
@@ -55,9 +55,6 @@ const roseImg = {
 									href={href}
 								>
 									<span class="group-hover:underline">{label}</span>
-									{i === nav.length - 1 && (
-										<span aria-hidden="true">↗&#xfe0e;</span>
-									)}
 								</a>
 							</li>
 						))}
