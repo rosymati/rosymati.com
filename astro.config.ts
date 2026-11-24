@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
 	site: 'https://rosymati.com',
+	// Pages are served as directories; links without the slash 307 on Cloudflare.
+	trailingSlash: 'always',
 	integrations: [sitemap()],
 	markdown: {
 		shikiConfig: {

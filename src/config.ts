@@ -8,10 +8,10 @@ export const site = {
 };
 
 export const nav = [
-	{ href: '/about', label: 'about' },
-	{ href: '/projects', label: 'work' },
-	{ href: '/blog', label: 'notes' },
-	{ href: '/contacts', label: 'say hello' },
+	{ href: '/about/', label: 'about' },
+	{ href: '/projects/', label: 'work' },
+	{ href: '/blog/', label: 'notes' },
+	{ href: '/contacts/', label: 'say hello' },
 ];
 
 export const contacts = [
