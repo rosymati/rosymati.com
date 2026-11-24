@@ -14,10 +14,17 @@ export const nav = [
 	{ href: '/contacts/', label: 'say hello' },
 ];
 
+/** Linked with rel="me" for Mastodon profile verification and author attribution. */
+export const fediverse = {
+	handle: '@matilde@tech.lgbt',
+	href: 'https://tech.lgbt/@matilde',
+};
+
 export const contacts: {
 	name: string;
 	description: string;
 	href?: string;
+	rel?: string;
 }[] = [
 	{
 		name: 'GitHub',
@@ -31,8 +38,9 @@ export const contacts: {
 	},
 	{
 		name: 'Fediverse',
-		description: '@matilde@tech.lgbt',
-		href: 'https://tech.lgbt/@matilde',
+		description: fediverse.handle,
+		href: fediverse.href,
+		rel: 'me',
 	},
 	// No public profile URL without a user ID, so this one is plain text.
 	{ name: 'Discord', description: '@milksheep' },

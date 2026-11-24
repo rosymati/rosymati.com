@@ -4,6 +4,7 @@ interface Props {
 		name: string;
 		/** Without one, the row is shown as plain text. */
 		href?: string;
+		rel?: string;
 		description: string;
 		tags?: string[];
 	}[];
@@ -13,7 +14,7 @@ const { items } = Astro.props;
 ---
 
 <ul class="border-rule divide-rule divide-y border-y">
-	{items.map(({ name, href, description, tags }) => {
+	{items.map(({ name, href, rel, description, tags }) => {
 		const external = href?.startsWith('https:');
 		const Row = href ? 'a' : 'div';
 		return (
@@ -25,7 +26,11 @@ const { items } = Astro.props;
 					]}
 					href={href}
 					target={external ? '_blank' : undefined}
-					rel={external ? 'noopener noreferrer' : undefined}
+					rel={
+						external
+							? [rel, 'noopener noreferrer'].filter(Boolean).join(' ')
+							: rel
+					}
 				>
 					<div>
 						<h2 class="font-instrument group-hover:text-pigment text-4xl leading-tight tracking-tight group-hover:underline sm:text-5xl">
