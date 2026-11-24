@@ -5,13 +5,13 @@
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "12.14.0",
+			"version": "12.23.0",
 			"onFail": "download"
 		},
 		"runtime": [
 			{
 				"name": "node",
-				"version": "24.22.0",
+				"version": "26.13.1",
 				"onFail": "download"
 			}
 		]
@@ -30,21 +30,21 @@
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.19",
-		"astro": "7.4.1",
+		"astro": "7.4.13",
 		"giscus": "^1.6.0",
-		"tailwindcss": "^4.3.3"
+		"tailwindcss": "^4.3.5"
 	},
 	"devDependencies": {
-		"@astrojs/check": "^0.9.11",
-		"@astrojs/sitemap": "^3.7.4",
-		"@prettier/plugin-oxc": "^0.2.3",
+		"@astrojs/check": "0.9.12",
+		"@astrojs/sitemap": "3.7.6",
+		"@prettier/plugin-oxc": "^0.2.4",
 		"@tailwindcss/typography": "^0.5.20",
-		"@tailwindcss/vite": "^4.3.3",
-		"oxlint": "^1.89.0",
-		"prettier": "=3.9.10",
-		"prettier-plugin-astro": "^1.1.1",
+		"@tailwindcss/vite": "^4.3.5",
+		"oxlint": "^1.95.0",
+		"prettier": "=3.10.1",
+		"prettier-plugin-astro": "^1.1.2",
 		"prettier-plugin-tailwindcss": "^0.8.1",
 		"typescript": "^6.0.3",
-		"wrangler": "^4.151.3"
+		"wrangler": "^4.167.0"
 	}
 }
