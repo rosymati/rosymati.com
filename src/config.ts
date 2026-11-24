@@ -14,7 +14,11 @@ export const nav = [
 	{ href: '/contacts/', label: 'say hello' },
 ];
 
-export const contacts = [
+export const contacts: {
+	name: string;
+	description: string;
+	href?: string;
+}[] = [
 	{
 		name: 'GitHub',
 		description: '@rosymati',
@@ -30,7 +34,8 @@ export const contacts = [
 		description: '@matilde@tech.lgbt',
 		href: 'https://tech.lgbt/@matilde',
 	},
-	{ name: 'Discord', description: '@milksheep', href: 'https://discord.com' },
+	// No public profile URL without a user ID, so this one is plain text.
+	{ name: 'Discord', description: '@milksheep' },
 	{
 		name: 'Twitter',
 		description: '@_rosymati',

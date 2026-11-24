@@ -2,7 +2,8 @@
 interface Props {
 	items: {
 		name: string;
-		href: string;
+		/** Without one, the row is shown as plain text. */
+		href?: string;
 		description: string;
 		tags?: string[];
 	}[];
@@ -13,11 +14,15 @@ const { items } = Astro.props;
 
 <ul class="border-rule divide-rule divide-y border-y">
 	{items.map(({ name, href, description, tags }) => {
-		const external = href.startsWith('https:');
+		const external = href?.startsWith('https:');
+		const Row = href ? 'a' : 'div';
 		return (
 			<li>
-				<a
-					class="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-6 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_auto] sm:gap-x-10 sm:py-8"
+				<Row
+					class:list={[
+						'grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 py-6 sm:grid-cols-[minmax(0,5fr)_minmax(0,6fr)_auto] sm:gap-x-10 sm:py-8',
+						href && 'group',
+					]}
 					href={href}
 					target={external ? '_blank' : undefined}
 					rel={external ? 'noopener noreferrer' : undefined}
@@ -31,13 +36,15 @@ const { items } = Astro.props;
 					<p class="text-copy col-span-2 col-start-1 row-start-2 max-w-[48ch] sm:col-span-1 sm:col-start-2 sm:row-start-1">
 						{description}
 					</p>
-					<span
-						class="text-pigment col-start-2 row-start-1 text-2xl sm:col-start-3"
-						aria-hidden="true"
-					>
-						↗&#xfe0e;
-					</span>
-				</a>
+					{href && (
+						<span
+							class="text-pigment col-start-2 row-start-1 text-2xl sm:col-start-3"
+							aria-hidden="true"
+						>
+							↗&#xfe0e;
+						</span>
+					)}
+				</Row>
 			</li>
 		);
 	})}
